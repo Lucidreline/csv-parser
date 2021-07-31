@@ -1,11 +1,18 @@
 .csv-drop {
-  border: 1px solid red;
+  border: 2px solid rgb(99, 99, 99);
   display: inline-block;
-  padding: 25px 50px;
-  border-radius: 8px;
+  padding: 30px 80px;
+  border-radius: 5px;
+
+  transition: 0.15s ease;
 
   &.highlight {
-    border-color: green;
+    border-color: rgb(47, 173, 47);
+    background-color: rgba(47, 173, 47, 0.1);
+    transform: scale(1.02);
+    .csv-drop-text {
+      color: rgb(99, 99, 99);
+    }
   }
 
   .csv-drop-text {
