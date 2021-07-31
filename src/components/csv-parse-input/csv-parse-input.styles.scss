@@ -1,0 +1,15 @@
+.csv-drop {
+  border: 1px solid red;
+  display: inline-block;
+  padding: 25px 50px;
+  border-radius: 8px;
+
+  &.highlight {
+    border-color: green;
+  }
+
+  .csv-drop-text {
+    position: relative;
+    z-index: -1;
+  }
+}
