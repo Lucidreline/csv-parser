@@ -1,6 +1,21 @@
 import React from "react";
+import { parse } from "papaparse";
 
 import "./csv-parse-input.styles.scss";
+
+const processFiles = (transferedFiles) => {
+  // convert from filelist to array
+  Array.from(transferedFiles)
+    .filter(
+      (file) => file.type === "text/csv" // only adds csv files to the array
+    )
+    .forEach(async (file) => {
+      // loops through each valid csv file
+      const text = await file.text(); // csv plain text
+      const parsedCsv = parse(text, { header: true });
+      console.log(parsedCsv.data);
+    });
+};
 
 const CsvParseInput = () => {
   const [highlighted, setHighlighted] = React.useState(false);
@@ -16,13 +31,7 @@ const CsvParseInput = () => {
         }}
         onDrop={(e) => {
           e.preventDefault();
-          console.log(e.dataTransfer.files);
-          // convert from filelist to array
-          Array.from(e.dataTransfer.files)
-            .filter(
-              (file) => file.type === "text/csv" // only adds csv files to the array
-            )
-            .forEach((file) => {});
+          processFiles(e.dataTransfer.files);
           setHighlighted(false);
         }}
       >
