@@ -3,7 +3,7 @@ import { processFiles } from "./functions";
 
 import "./csv-parse-input.styles.scss";
 
-const CsvParseInput = () => {
+const CsvParseInput = ({ boxText }) => {
   const [highlighted, setHighlighted] = React.useState(false);
 
   return (
@@ -21,7 +21,7 @@ const CsvParseInput = () => {
           setHighlighted(false);
         }}
       >
-        <span className="csv-drop-text">Drop CSV Here</span>
+        <span className="csv-drop-text">{boxText}</span>
       </div>
     </div>
   );

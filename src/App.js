@@ -5,7 +5,7 @@ import CsvParseInput from "./components/csv-parse-input/csv-parse-input.componen
 function App() {
   return (
     <div className="App">
-      <CsvParseInput />
+      <CsvParseInput boxText="Drop CSV Here" />
     </div>
   );
 }
