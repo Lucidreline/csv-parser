@@ -1,7 +1,14 @@
 import React from "react";
+import { post } from "axios";
 import { parse } from "papaparse";
 
 import "./csv-parse-input.styles.scss";
+
+const postContent = (parsedData) => {
+  post(process.env.REACT_APP_URL, parsedData).then((res) => {
+    console.log(res);
+  });
+};
 
 const processFiles = (transferedFiles) => {
   // convert from filelist to array
@@ -13,7 +20,7 @@ const processFiles = (transferedFiles) => {
       // loops through each valid csv file
       const text = await file.text(); // csv plain text
       const parsedCsv = parse(text, { header: true });
-      console.log(parsedCsv.data);
+      postContent(parsedCsv.data);
     });
 };
 
